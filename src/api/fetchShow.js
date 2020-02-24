@@ -1,15 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { formatSeasons } from '../utils/formatSeasons';
+// import React from "react";
+import axios from "axios";
 
-const [show, setShow] = useState(null);
-const [seasons, setSeasons] = useState([]);
-
-export const fetchShow = () => { 
-    return axios.get
-    ("https://api.tvmaze.com/singlesearch/shows?q=stranger-things&embed=episodes")
+export const fetchShow = () => {
+    return axios.get("https://api.tvmaze.com/singlesearch/shows?q=stranger-things&embed=episodes")
       .then(res => {
-        setShow(res.data);
-        setSeasons(formatSeasons(res.data._embedded.episodes));
-      });
-  }
+     return res
+    })
+      .catch(error => {
+          console.log(error);
+      })  }
+   
