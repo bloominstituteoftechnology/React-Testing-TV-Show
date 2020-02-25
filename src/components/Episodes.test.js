@@ -206,12 +206,12 @@ const episodes = [
       }
     }
   ];
-
-  test('episode component renders correctly', () => {
-      const { queryAllByTestId, rerender } = render(<Episodes episodes={[]} />);
-      expect(queryAllByTestId('episode')).toStrictEqual([]);
-      expect(queryAllByTestId('episode')).toHaveLength(0);
-
-      rerender(<Episodes episodes={episodes} />);
-  expect(queryAllByTestId("episode")).toHaveLength(8);
+  
+  test("Episode Component renders correctly", () => {
+    const { queryAllByTestId, rerender } = render(<Episodes episodes={[]} />);
+    expect(queryAllByTestId("episode")).toStrictEqual([]);
+    expect(queryAllByTestId("episode")).toHaveLength(0);
+  
+    rerender(<Episodes episodes={episodes} />);
+    expect(queryAllByTestId("episode")).toHaveLength(8);
   });

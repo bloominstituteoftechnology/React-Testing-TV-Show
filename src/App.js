@@ -17,7 +17,6 @@ export default function App() {
 
   useEffect(() => {
     fetchShow() 
-        
         .then(res => {
           console.log('App.js fetchshow results', res)
           setShow(res.data);
