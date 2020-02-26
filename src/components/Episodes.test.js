@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from  '@testing-library/react';
+import { render, wait } from  '@testing-library/react';
 import Episodes from './Episodes';
 import App from '../App';
 
@@ -215,3 +215,15 @@ const episodes = [
     rerender(<Episodes episodes={episodes} />);
     expect(queryAllByTestId("episode")).toHaveLength(8);
   });
+
+  // test('renders card to the screen', async ()=> {
+  //   const { queryAllByTestId, rerender } =render(<Episodes episodes={[]} />)
+
+  //   await wait (() => {
+  //     queryAllByTestId(/card/i)
+  //   })
+  //   expect(queryAllByTestId(/card/i)).toHaveLength(0);
+
+  //   rerender(<Episodes episodes={episodes} />)
+  //   expect(queryAllByTestId(/card/i)).toHaveLength(8)
+  // })

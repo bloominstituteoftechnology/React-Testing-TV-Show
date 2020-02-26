@@ -3,6 +3,7 @@ import { render, waitForElement, wait, act } from '@testing-library/react';
 import userEvent from "@testing-library/user-event";
 import { fetchShow as mockFetchShow } from './api/fetchShow';
 import App from './App';
+import { exportAllDeclaration } from '@babel/types';
 
 jest.mock('./api/fetchShow');
 
@@ -734,3 +735,16 @@ const episodes = {
           return render(<App />)
       });
   });
+
+
+  // jest.mock('./fetchShow.js')
+  
+  // test('renders to the screen', async () =>{
+  //   mockFetchShow.mockResolvedValueOnce(mockData)
+  //   const {getByTestId} = render (<App />)
+  //   await wait(() => {
+  //     getByTestId(/title/i)
+  //   })
+  //   expect(getByTestId(/title/i)).toBeTruthy()
+  // }
+  // )
