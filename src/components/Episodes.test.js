@@ -2,11 +2,11 @@ import React from 'react';
 import Episodes from './Episodes';
 import * as rtl from '@testing-library/react';
 
-// jest.mock('axios', () => {
-//   return {
-//     get: url => {}
-//   };
-// });
+jest.mock('axios', () => {
+  return {
+    get: url => {}
+  };
+});
 const ep = [
   {
     id: 553946,
