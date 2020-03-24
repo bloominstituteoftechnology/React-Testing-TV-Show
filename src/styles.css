@@ -69,6 +69,7 @@ body {
 
 .episode-image {
   width: 250px;
+  
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
 }
@@ -80,6 +81,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  color: white;
+  background-color: red;
 }
 
 .episode-info > h3,
