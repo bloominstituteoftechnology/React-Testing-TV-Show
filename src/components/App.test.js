@@ -1,18 +1,15 @@
-import React from 'react';
-import { render, wait, debug } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import App from "../App"
-
-test("Running App without an error", () => {
-    render(<App/>)
-})
-
 import React from "react";
 import { render, wait, debug } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-import App from "./App";
-import fetchShow from "./api/fetchShow";
+import App from "../App";
+import fetchShow from "../api/fetchShow";
+
+
+// test("Running App without an error", () => {
+//     render(<App/>)
+// })
+
 
 // Test Data
 const episodes = {
@@ -715,7 +712,6 @@ const episodes = {
 };
 
 jest.mock("./api/fetchShow");
-
 test("Rendering dropdown menu", async () => {
   fetchShow.mockResolvedValueOnce(episodes);
   const { getByText, getAllByText } = render(<App />);
