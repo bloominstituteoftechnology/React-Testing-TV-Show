@@ -6,6 +6,7 @@ import parse from "html-react-parser";
 import { formatSeasons } from "./utils/formatSeasons";
 
 import Episodes from "./components/Episodes";
+import fetchShow  from './api/fetchShow';
 import "./styles.css";
 
 export default function App() {
@@ -14,19 +15,28 @@ export default function App() {
   const [selectedSeason, setSelectedSeason] = useState("");
   const episodes = seasons[selectedSeason] || [];
 
+  const getData = () => {
+    setShow(true);
+    fetchShow()
+      .then(res => {
+        setShow(false);
+
+      })
+  }
   useEffect(() => {
-    const fetchShow = () => {
-      axios
-        .get(
-          "https://api.tvmaze.com/singlesearch/shows?q=stranger-things&embed=episodes"
-        )
-        .then(res => {
-          setShow(res.data);
-          setSeasons(formatSeasons(res.data._embedded.episodes));
-        });
-    };
-    fetchShow();
-  }, []);
+    fetchShow(true)
+     .then (res => {
+       //set state with data
+       setShow(false);
+       setSeasons(formatSeasons(res.data._embedded.episodes))
+      })
+     .catch(err => {
+      setShow(false);
+      setSeasons(formatSeasons(res.data._embedded.episodes));
+     })
+   }, []);
+  
+  
 
   const handleSelect = e => {
     setSelectedSeason(e.value);
