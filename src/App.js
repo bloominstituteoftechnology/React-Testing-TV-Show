@@ -4,6 +4,7 @@ import Dropdown from "react-dropdown";
 import parse from "html-react-parser";
 
 import { formatSeasons } from "./utils/formatSeasons";
+import {fetchEpisodes} from './api/fetchEpisodes';
 
 import Episodes from "./components/Episodes";
 import "./styles.css";
