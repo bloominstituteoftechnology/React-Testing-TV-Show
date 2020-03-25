@@ -80,6 +80,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  color: black;
 }
 
 .episode-info > h3,
@@ -90,6 +91,7 @@ body {
 .episode-info > h3 {
   text-align: center;
   margin: 12px 0;
+  color: red;
 }
 
 .episode-number {
