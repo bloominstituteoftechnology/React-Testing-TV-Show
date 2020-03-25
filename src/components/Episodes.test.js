@@ -1,12 +1,8 @@
 import React from "react";
-import { render, queryAllByTestId } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import Episodes from "./Episodes";
 
-test("renders the episodes without anything going through props", () => {
-  render(<Episodes episodes={[]} />);
-});
-
-export const dummyData = [
+const episodes = [
   {
     id: 553946,
     url:
@@ -81,12 +77,140 @@ export const dummyData = [
         href: "http://api.tvmaze.com/episodes/578664"
       }
     }
+  },
+  {
+    id: 578665,
+    url:
+      "http://www.tvmaze.com/episodes/578665/stranger-things-1x04-chapter-four-the-body",
+    name: "Chapter Four: The Body",
+    season: 1,
+    number: 4,
+    airdate: "2016-07-15",
+    airtime: "",
+    airstamp: "2016-07-15T12:00:00+00:00",
+    runtime: 60,
+    image: {
+      medium:
+        "http://static.tvmaze.com/uploads/images/medium_landscape/67/168921.jpg",
+      original:
+        "http://static.tvmaze.com/uploads/images/original_untouched/67/168921.jpg"
+    },
+    summary:
+      "<p>Jim realizes that the government is covering something up about Will's death and begins a personal investigation. Meanwhile, Nancy discovers that Jonathan has information about Barbara's disappearance, while Mike and his friends smuggle Jane into the school so she can use the ham radio to contact Will.</p>",
+    _links: {
+      self: {
+        href: "http://api.tvmaze.com/episodes/578665"
+      }
+    }
+  },
+  {
+    id: 578666,
+    url:
+      "http://www.tvmaze.com/episodes/578666/stranger-things-1x05-chapter-five-the-flea-and-the-acrobat",
+    name: "Chapter Five: The Flea and the Acrobat",
+    season: 1,
+    number: 5,
+    airdate: "2016-07-15",
+    airtime: "",
+    airstamp: "2016-07-15T12:00:00+00:00",
+    runtime: 60,
+    image: {
+      medium:
+        "http://static.tvmaze.com/uploads/images/medium_landscape/67/168922.jpg",
+      original:
+        "http://static.tvmaze.com/uploads/images/original_untouched/67/168922.jpg"
+    },
+    summary:
+      "<p>Jim searches for Will at Hawkins Laboratory, but finds something unexpected. Meanwhile, Lonnie helps Joyce bury Will but reveals an ulterior motive for returning to town, while the boys find a way to locate Will but discover that Jane is opposing them.</p>",
+    _links: {
+      self: {
+        href: "http://api.tvmaze.com/episodes/578666"
+      }
+    }
+  },
+  {
+    id: 578667,
+    url:
+      "http://www.tvmaze.com/episodes/578667/stranger-things-1x06-chapter-six-the-monster",
+    name: "Chapter Six: The Monster",
+    season: 1,
+    number: 6,
+    airdate: "2016-07-15",
+    airtime: "",
+    airstamp: "2016-07-15T12:00:00+00:00",
+    runtime: 60,
+    image: {
+      medium:
+        "http://static.tvmaze.com/uploads/images/medium_landscape/67/168923.jpg",
+      original:
+        "http://static.tvmaze.com/uploads/images/original_untouched/67/168923.jpg"
+    },
+    summary:
+      "<p>Jonathan manages to pull Nancy back to the real world from the Upside Down. Meanwhile, Lucas refuses to help with the search for Jane and goes to Hawkins Labs on his own, while Dustin and Mike look for the missing girl.</p>",
+    _links: {
+      self: {
+        href: "http://api.tvmaze.com/episodes/578667"
+      }
+    }
+  },
+  {
+    id: 578668,
+    url:
+      "http://www.tvmaze.com/episodes/578668/stranger-things-1x07-chapter-seven-the-bathtub",
+    name: "Chapter Seven: The Bathtub",
+    season: 1,
+    number: 7,
+    airdate: "2016-07-15",
+    airtime: "",
+    airstamp: "2016-07-15T12:00:00+00:00",
+    runtime: 60,
+    image: {
+      medium:
+        "http://static.tvmaze.com/uploads/images/medium_landscape/67/168925.jpg",
+      original:
+        "http://static.tvmaze.com/uploads/images/original_untouched/67/168925.jpg"
+    },
+    summary:
+      "<p>Jim manages to bring everyone together so that they can join forces to reconnect Jane to the Upside Down and find Will. Meanwhile, the government closes in on Jane and the boys.</p>",
+    _links: {
+      self: {
+        href: "http://api.tvmaze.com/episodes/578668"
+      }
+    }
+  },
+  {
+    id: 578669,
+    url:
+      "http://www.tvmaze.com/episodes/578669/stranger-things-1x08-chapter-eight-the-upside-down",
+    name: "Chapter Eight: The Upside Down",
+    season: 1,
+    number: 8,
+    airdate: "2016-07-15",
+    airtime: "",
+    airstamp: "2016-07-15T12:00:00+00:00",
+    runtime: 60,
+    image: {
+      medium:
+        "http://static.tvmaze.com/uploads/images/medium_landscape/67/168926.jpg",
+      original:
+        "http://static.tvmaze.com/uploads/images/original_untouched/67/168926.jpg"
+    },
+    summary:
+      "<p>Jim convinces Brenner to let him and Joyce enter the Upside Down to find Will... unaware that Brenner plans to recover Jane no matter what it takes. Meanwhile, Nancy and Jonathan prepare to trap the monster at the Byers house, but receive an unexpected visitor.</p>",
+    _links: {
+      self: {
+        href: "http://api.tvmaze.com/episodes/578669"
+      }
+    }
   }
 ];
 
-test("Episodes with dummy data", () => {
-  const { rerender, queryAllByTestId } = render(<Episodes episodes={[]} />);
+test("Episodes shows data when rendered with new episode data", () => {
+  const { queryAllByTestId, rerender } = render(<Episodes episodes={[]} />);
 
-  rerender(<Episodes episodes={dummyData} />);
-  expect(queryAllByTestId(/testEpisodes/i)).toHaveLength(3);
-});
+  expect(queryAllByTestId(/episode/i)).toHaveLength(0);
+
+  rerender(<Episodes episodes={episodes} />);
+
+  expect(queryAllByTestId(/episode/i)).toHaveLength(8);
+}); 
