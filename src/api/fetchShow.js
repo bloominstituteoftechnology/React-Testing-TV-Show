@@ -9,5 +9,9 @@ export const fetchShow = () => {
       return res.data
       // setShow(res.data);
       // setSeasons(formatSeasons(res.data._embedded.episodes));
+    })
+    .catch(error => {
+      console.log("error fetching data from api", error.message);
+      return error;
     });
 };
