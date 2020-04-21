@@ -16,8 +16,8 @@ Get the project fired up and start using it as a user would. Try to go through t
 
 ### Project Set Up
 
-- [ ] Create a forked copy of this project.
-- [ ] Add your team lead as collaborator on Github.
+- [X] Create a forked copy of this project.
+- [ ] Add ur team lead as collaborator on Github.
 - [ ] Clone your OWN version of the repository in your terminal
 - [ ] CD into the project base directory `cd React-Testing-TV-Show`
 - [ ] Download project dependencies by running `npm install`
