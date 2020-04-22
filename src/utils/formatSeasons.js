@@ -6,6 +6,6 @@ export const formatSeasons = allEpisodes => {
     }
     seasons[`Season ${e.season}`].push(e);
   });
-  console.log(seasons);
+  // console.log(seasons);
   return seasons;
 };
