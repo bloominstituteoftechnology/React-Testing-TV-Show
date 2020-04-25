@@ -25,4 +25,4 @@ expect(allEpisodes).toStrictEqual([]);
 rerender(<Episodes episodes={mockData}/>);
 allEpisodes = queryAllByText(/e/i)
 expect(allEpisodes).toHaveLength(3)
-})
+}) 
