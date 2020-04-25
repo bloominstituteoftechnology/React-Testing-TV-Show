@@ -1,7 +1,6 @@
 import React from "react";
 import { 
   render, 
-  cleanup,
   waitForElementToBeRemoved, 
   fireEvent, } from "@testing-library/react"; 
   
@@ -10,9 +9,24 @@ import {
   import App from './App'; 
   import { mockData } from './mockData';
 
-afterEach(cleanup);
-
-
+//   jest.mock(
+//     'react-dropdown',
+//     () => ({ options, value, onChange }) => {
+//         return (
+//             <select
+//             value={value}
+//             onChange={(e) => onChange(e.target)}
+//             data-testid="select"
+//             >
+//             {options.map((option, i) => (
+//             <option key={i} value={option}>
+//                 {option}
+//             </option>
+//             ))}
+//             </select>
+//         );
+//     }
+// );
 
 test('fetches and renders the data', async () => {
   mockAxios.get.mockResolvedValueOnce(mockData); 
@@ -23,6 +37,7 @@ test('fetches and renders the data', async () => {
   await waitForElementToBeRemoved(() => getByTestId('fetching'));
 
   const selectInput = getByTestId('select');
+  console.log(selectInput.innerHTML)
   fireEvent.change(selectInput, {target: { value: 'Season 100' } });
 
   expect(selectInput).toHaveTextContent('Season 100');

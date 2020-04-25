@@ -15,7 +15,7 @@ export const episodes = [
         season: 100,
         number: 12,
         image: { medium: '/second' },
-        summary: '<p> do not  watch it </p>' 
+        summary: '<p> do watch it </p>' 
     },
 ];
 
