@@ -1,7 +1,8 @@
 import React from "react";
-import { render, waitFor } from "@testing-library/react";
+import { render, waitFor, getByTestId  } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import App from "./App";
+import Episodes from "./components/Episodes";
 import { fetchShow as mockFetchShow } from "./api/fetchShow"
 
 jest.mock("./api/fetchShow");
@@ -744,3 +745,8 @@ test("App is rendering", async () => {
     const textError = getByText(/season 1/i);
     expect(textError).toBeInTheDocument();
 });
+
+test("Episodes.js is rendering", () => {
+  const { getByTestId } = render(<Episodes />);
+  getByTestId(`episodes`);
+  });
