@@ -6,7 +6,7 @@ import { formatSeasons } from "./utils/formatSeasons";
 import Episodes from "./components/Episodes";
 import "./styles.css";
 
-// NEW
+// 4. Import `fetchShow` into `App.js` so you can make your async call from your `useEffect` hook.
 import {fetchShow} from './api/fetchShow'
 
 
@@ -16,6 +16,8 @@ export default function App() {
   const [selectedSeason, setSelectedSeason] = useState("");
   const episodes = seasons[selectedSeason] || [];
 
+
+  // 6. Inside your `.then()` in the `useEffect` hook, set your data again.
   useEffect(() => {
     fetchShow().then((res) => {
       console.log(res);
