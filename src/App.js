@@ -9,6 +9,7 @@ import Episodes from "./components/Episodes";
 import "./styles.css";
 
 export default function App() {
+  const showName = "stranger-things";
   const [show, setShow] = useState(null);
   const [seasons, setSeasons] = useState([]);
   const [selectedSeason, setSelectedSeason] = useState("");
@@ -18,9 +19,9 @@ export default function App() {
     const fetchShow = () => {
       axios
         .get(
-          "https://api.tvmaze.com/singlesearch/shows?q=stranger-things&embed=episodes"
+          `https://api.tvmaze.com/singlesearch/shows?q=${showName}&embed=episodes`
         )
-        .then(res => {
+        .then((res) => {
           setShow(res.data);
           setSeasons(formatSeasons(res.data._embedded.episodes));
         });
@@ -28,7 +29,7 @@ export default function App() {
     fetchShow();
   }, []);
 
-  const handleSelect = e => {
+  const handleSelect = (e) => {
     setSelectedSeason(e.value);
   };
 
@@ -42,6 +43,7 @@ export default function App() {
       <h1>{show.name}</h1>
       {parse(show.summary)}
       <Dropdown
+        data-testid="dropdown"
         options={Object.keys(seasons)}
         onChange={handleSelect}
         value={selectedSeason || "Select a season"}
