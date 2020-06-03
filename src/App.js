@@ -21,6 +21,7 @@ export default function App() {
           "https://api.tvmaze.com/singlesearch/shows?q=stranger-things&embed=episodes"
         )
         .then(res => {
+          console.log(res.data)
           setShow(res.data);
           setSeasons(formatSeasons(res.data._embedded.episodes));
         });
