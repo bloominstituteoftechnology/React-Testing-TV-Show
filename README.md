@@ -16,20 +16,20 @@ Get the project fired up and start using it as a user would. Try to go through t
 
 ### Project Set Up
 
-- [ ] Create a forked copy of this project.
-- [ ] Add your team lead as collaborator on Github.
-- [ ] Clone your OWN version of the repository in your terminal
-- [ ] CD into the project base directory `cd React-Testing-TV-Show`
-- [ ] Download project dependencies by running `npm install`
-- [ ] Start up the app using `npm start`
-- [ ] Create a new branch: git checkout -b `<firstName-lastName>`.
+- [x] Create a forked copy of this project.
+- [x] Add your team lead as collaborator on Github.
+- [x] Clone your OWN version of the repository in your terminal
+- [x] CD into the project base directory `cd React-Testing-TV-Show`
+- [x] Download project dependencies by running `npm install`
+- [x] Start up the app using `npm start`
+- [x] Create a new branch: git checkout -b `<firstName-lastName>`.
 - [ ] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly.
 - [ ] Push commits: git push origin `<firstName-lastName>`.
 
 Follow these steps for completing your project.
 
 - [ ] Submit a Pull-Request to merge <firstName-lastName> Branch into master (student's Repository). **Please don't merge your own pull request**
-- [ ] Add your team lead as a reviewer on the pull-request
+- [x] Add your team lead as a reviewer on the pull-request
 - [ ] Your team lead will count the project as complete by merging the branch back into master.
 - [ ] Do your magic!
 
@@ -41,12 +41,12 @@ Your challenge for this module: write tests for both the `App.js` component and 
 
 The async call being inside the component makes it hard to test the asynchronous nature of the component. Let's move the async function into an `/api` directory so we can easily mock that function and make the async tests easier.
 
-1. Create a directory called `/api` in the `src` directory
-1. Create a file inside `/api` called `fetchShow.js`
-1. Move `fetchShow` into that new file and export it (fetchShow is in the `useEffect` - pay attention to how this was setting state. You will still need to set state in this effect hook the exact same way...)
-1. Import `fetchShow` into `App.js` so you can make your async call from your `useEffect` hook.
-1. You will need to `return` the `axios.get` call, _and_ the data inside your `.then()`. This is necessary because when you call `fetchShow` in your useEffect, you need to chain off the promise for a new `.then()`, then you need the data to be returned once the promise is resolved
-1. Inside your `.then()` in the `useEffect` hook, set your data again.
+- [ ] Create a directory called `/api` in the `src` directory
+- [ ] Create a file inside `/api` called `fetchShow.js`
+- [ ] Move `fetchShow` into that new file and export it (fetchShow is in the `useEffect` - pay attention to how this was setting state. You will still need to set state in this effect hook the exact same way...)
+- [ ] Import `fetchShow` into `App.js` so you can make your async call from your `useEffect` hook.
+- [ ] You will need to `return` the `axios.get` call, _and_ the data inside your `.then()`. This is necessary because when you call `fetchShow` in your useEffect, you need to chain off the promise for a new `.then()`, then you need the data to be returned once the promise is resolved
+- [ ] Inside your `.then()` in the `useEffect` hook, set your data again.
 
 - Note that you need `axios` in the new file
 
@@ -70,8 +70,8 @@ useEffect(() => {
 
 ### Stretch goals
 
-- There is an utility function in this project that contains an isolated pure function. Look up how to do `unit tests` with Jest and test that function.
+- [ ] There is an utility function in this project that contains an isolated pure function. Look up how to do `unit tests` with Jest and test that function.
 
-- Look up the `TVMaze` API. Add a dropdown with the titles of some other popular shows. Add the user sequence of choosing a different show to fetch data for different shows.
+- [ ] Look up the `TVMaze` API. Add a dropdown with the titles of some other popular shows. Add the user sequence of choosing a different show to fetch data for different shows.
 
-- Add React Router, and add the functionality to click an episode and navigate to an episode page.
+- [ ] Add React Router, and add the functionality to click an episode and navigate to an episode page.
