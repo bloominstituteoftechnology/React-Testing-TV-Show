@@ -3,6 +3,7 @@ import React from 'react';
 import {render, fireEvent, waitFor, waitForElementToBeRemoved, getByTestId, getByLabelText} from '@testing-library/react';
 import App from './App';
 import { act } from 'react-dom/test-utils';
+import {episodesFixture} from './components/Episodes.test';
 
 //create fetchEpisode function for testing
 //jest.mock("")
