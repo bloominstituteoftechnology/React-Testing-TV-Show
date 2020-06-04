@@ -2,23 +2,23 @@
 import React from 'react';
 import {render, fireEvent, waitFor, waitForElementToBeRemoved, getByTestId, getByLabelText} from '@testing-library/react';
 import App from './App';
+import { fetchShow as mockFetchShow } from './api/fetchShow';
 import { act } from 'react-dom/test-utils';
 import {episodesFixture} from './components/Episodes.test';
 
 //create fetchEpisode function for testing
-//jest.mock("")
+jest.mock("./api/fetchShow")
 
 test("App fetches and renders episode data", async ()=>{
 //expect(true).toBe(true);
 
-const {getByText, queryAllByTestId} = render(<App />);
+mockFetchShow.mockResolvedValueOnce({data: episodesFixture});
 
-//dropdown hasn't selected a season should return empty array
-const episodeList = queryAllByTestId("episodes");
-
-//const dropdown = getByText("dropdown");
+// const {getByText, queryAllByTestId} = render(<App />);
 
 
-console.log('ea: App.test.js,', episodeList);
-});
+// await waitFor(()=>{
+//   expect(queryAllByTestId("episode")).toHaveLength(8);
+// });
+})
 
