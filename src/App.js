@@ -17,7 +17,7 @@ export default function App() {
   useEffect(() => {
     fetchShow(showName)
       .then(res => {
-        console.log('ea: App.js useEffect fetchShow results:',res.data);
+       // console.log('ea: App.js useEffect fetchShow results:',res.data);
         setShow(res.data);
         setSeasons(formatSeasons(res.data._embedded.episodes));
         
@@ -41,7 +41,7 @@ export default function App() {
       <h1>{show.name}</h1>
       {parse(show.summary)}
       <Dropdown
-        data-testid="dropdown"
+        label="dropdown"
         options={Object.keys(seasons)}
         onChange={handleSelect}
         value={selectedSeason || "Select a season"}

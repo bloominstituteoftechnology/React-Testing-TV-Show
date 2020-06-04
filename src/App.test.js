@@ -1,24 +1,21 @@
 
 import React from 'react';
-import {render, fireEvent, waitFor, waitForElementToBeRemoved, getByTestId, getByLabelText} from '@testing-library/react';
+import {render, fireEvent, waitFor} from '@testing-library/react';
 import App from './App';
 import { fetchShow as mockFetchShow } from './api/fetchShow';
-import { act } from 'react-dom/test-utils';
-import {episodesFixture} from './components/Episodes.test';
+import { episodeFixture } from './components/Episodes.test';
 
 //create fetchEpisode function for testing
-jest.mock("./api/fetchShow")
-
+jest.mock('./api/fetchShow')
+//console.log("ea: App.test.js: mockFetchShow: ", mockFetchShow);
 test("App fetches and renders episode data", async ()=>{
-//expect(true).toBe(true);
+  // Arrange
+  mockFetchShow.mockResolvedValueOnce({data: episodeFixture[0]});
+  const { getByRole, queryAllByTestId } = render(<App />);
+  await waitFor(()=>{
 
-mockFetchShow.mockResolvedValueOnce({data: episodesFixture});
-
-// const {getByText, queryAllByTestId} = render(<App />);
-
-
-// await waitFor(()=>{
-//   expect(queryAllByTestId("episode")).toHaveLength(8);
-// });
+    expect(getByRole("heading")).toHaveTextContent('Stranger Things');
+  });
 })
-
+  // Act
+  // Assert
