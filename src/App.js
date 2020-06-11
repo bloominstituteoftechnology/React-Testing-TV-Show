@@ -9,7 +9,7 @@ import "./styles.css";
 
 export default function App() {
   const [showName, setShowName] = useState("Stranger-Things");
-  const options = ['Stranger-Things', 'outter-limits', 'Simpsons', 'Westworld', 'Breaking-bad', 'Game-of-Thrones', 'Rick-and-Morty', 'Shameless']
+  const options = ['Stranger-Things', 'Outer-Limits','King-Of-The-Hill', 'Simpsons', 'Westworld', 'Breaking-bad', 'Game-of-Thrones', 'Rick-and-Morty', 'Shameless']
   const [show, setShow] = useState(null);
   const [toggleShow, setToggleShow] = useState(true)
   const [seasons, setSeasons] = useState([]);

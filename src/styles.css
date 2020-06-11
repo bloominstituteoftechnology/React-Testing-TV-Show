@@ -119,8 +119,11 @@ p.episode-runtime {
   font-size: 0.8rem;
 }
 @media only screen and (max-width: 600px) {
+  .show-info {
+    width: 400px;
+  }
   .episode {
-    width: 450px;
+    width: 400px;
   }
   .episode-image {
     border-radius: 6px;
