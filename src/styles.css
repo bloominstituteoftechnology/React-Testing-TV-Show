@@ -127,7 +127,7 @@ p.episode-runtime {
   }
   .episode-image {
     border-radius: 6px;
-    box-shadow: 5px 5px 25px #000;
+    box-shadow: 5px 5px 25px #111;
     margin:1rem;
   }
 }
