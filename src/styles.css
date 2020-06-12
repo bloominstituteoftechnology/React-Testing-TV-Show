@@ -29,6 +29,7 @@ body {
   margin: 2rem;
   width: 210px;
   box-shadow: 5px 10px 15px #000;
+  cursor: pointer;
 }
 .show-info {
   max-width: 900px;
