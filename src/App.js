@@ -18,7 +18,7 @@ export default function App() {
     "Doctor-Who",
   ];
   const [show, setShow] = useState("");
-  const [toggleShow, setToggleShow] = useState(true);
+  const [toggleShow, setToggleShow] = useState(false);
   const [seasons, setSeasons] = useState([]);
   const [selectedSeason, setSelectedSeason] = useState("");
   const episodes = seasons[selectedSeason] || [];
@@ -74,7 +74,7 @@ export default function App() {
   return (
     <div className="App">
       <div className="poster-banner" style={bgStyle}>
-        <img className="poster-img" src={show.image.medium} alt={show.name} />
+        <img className="poster-img" src={show.image.medium} alt={show.name} onClick={toggle}/>
       </div>
       <div className="show-info">
         {toggleShow ? (
