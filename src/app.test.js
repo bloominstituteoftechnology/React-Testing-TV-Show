@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 import App from "./App";
 import { render, waitFor } from "@testing-library/react";
@@ -33,3 +34,24 @@ test("App fetches episode data and renders it", async () => {
     expect(queryAllByText(/summary/i)).toHaveLength(1);
   });
 });
+=======
+import "@testing-library/jest-dom/extend-expect";
+import React from "react";
+import App from "./App";
+import * as rtl from "@testing-library/react";
+
+describe("App", () => {
+  let wrapper;
+
+  afterEach(rtl.cleanup);
+  beforeEach(() => {
+    wrapper = rtl.render(<App />);
+  });
+
+  it("shows the correct name starting with the API data", async () => {
+    const text = await wrapper.findByText("Select a season");
+    expect(text).toBeInTheDocument();
+    expect(text).toBeVisible();
+  });
+});
+>>>>>>> 0c5d3ee399b31009f03fdad8b8318a02990ec8c7
