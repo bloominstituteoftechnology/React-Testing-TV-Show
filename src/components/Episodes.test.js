@@ -5,8 +5,9 @@ import {render} from "@testing-library/react";
 test("re-renders correctly with episodes", () => {
     const {rerender, queryAllByTestId} = render(<Episodes episodes={[]}/>);
     const episodes = queryAllByTestId(/episode/ig);//episodes because queryAll returns an array
-    //expect(episodes.length).toBeLessThanOrEqual(0);//todo: why does this test fail?
-    //expect(episodes).toStrictEqual([]);//todo: this test fails, expected [], received Array [
+    expect(episodes.length).toBeLessThanOrEqual(0);//todo: why does this test fail?
+    expect(episodes).toStrictEqual([]);//todo: this test fails, expected [], received Array
+    // [
     //     +   <div
     //     +     class="episodes"
     //     +     data-testid="episodes"

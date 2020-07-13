@@ -80,6 +80,9 @@ test("Renders app and tests components", async () => {
     const dropdown = getByTestId(/dropdown/i);
     fireEvent.click(dropdown);
 
+    await waitFor(() => {
+        expect(getAllByTestId(/moviePoster/i)).toHaveLength(1);
+    }, 10);
 
 });
 
