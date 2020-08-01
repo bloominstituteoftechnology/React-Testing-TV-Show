@@ -1,12 +1,13 @@
 import axios from 'axios';
 
-const fetchShow = () => {
+export const fetchShow = (showApi) => {
     return axios
       .get(
-        "https://api.tvmaze.com/singlesearch/shows?q=stranger-things&embed=episodes"
+        showApi
+        // "https://api.tvmaze.com/singlesearch/shows?q=stranger-things&embed=episodes"
       )
       .then(res => {
-          console.log("res: ", res.data);
+          console.log("nb: fetchShow.js: fetchShow: res: ", res.data);
           return res;
       })
       .catch(err => {
@@ -15,4 +16,4 @@ const fetchShow = () => {
       })
 }
 
-export default fetchShow;
+// export default fetchShow;

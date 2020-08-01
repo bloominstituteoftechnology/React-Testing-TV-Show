@@ -2,7 +2,7 @@ import React from "react";
 import { render } from "@testing-library/react";
 import Episodes from './Episodes';
 
-const episodesFixture = {
+export const episodesFixture = {
     id:2993,
     url:"http://www.tvmaze.com/shows/2993/stranger-things",
     name:"Stranger Things",
@@ -11,15 +11,17 @@ const episodesFixture = {
     genres: [
         "Drama",
         "Fantasy"
-    ],
+    ]
 }
+
+// console.log("nb: Episodes.test.js: episodesFixture: ", episodesFixture);
 
 test("Episode's content",()=>{
     const { queryAllByTestId, rerender } = render(<Episodes episodes={[]} />);
 
      expect(queryAllByTestId("episodes")).toHaveLength(0);
     
-     rerender(<Episodes episodes={[episodesFixture]}/>)
+     rerender(<Episodes episodes={[ episodesFixture ]}/>)
 
-     expect(queryAllByTestId("episodes")).toHaveLength(0)
+     expect(queryAllByTestId("episodes")).toHaveLength(1)
 })
