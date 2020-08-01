@@ -15,7 +15,7 @@ export default function App() {
   const [error, setError] = useState("");
   const [desiredShow, setDesiredShow] = useState([]);
   const [showApi, setShowApi] = useState(
-    "https://api.tvmaze.com/singlesearch/shows?q=stranger-things&embed=episodes"
+    "https://api.tvmaze.com/singlesearch/shows?q=gravity-falls&embed=episodes"
   );
   const [selectedSeason, setSelectedSeason] = useState("");
   const episodes = seasons[selectedSeason] || [];
