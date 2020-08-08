@@ -1,14 +1,19 @@
 import React from "react";
-import { render, fireEvent, wait } from "@testing-library/react";
+import { render, fireEvent, wait, waitFor } from "@testing-library/react";
 import { fetchShow as mockFetchShow } from "./api/fetchShow";
 
 import App from "./App";
-import { mockEpisodeData } from "./fixtures/showData";
+import {
+  mockEpisodeData,
+  mockShowData,
+  newMockShowData,
+  newNewShowData,
+} from "./fixtures/showData";
 
 jest.mock("./api/fetchShow");
 
 test("episodes are set when season selected", async () => {
-  mockFetchShow.mockResolvedValueOnce({ data: mockEpisodeData });
+  mockFetchShow.mockResolvedValueOnce({ data: newNewShowData });
 
   const { queryAllByTestId, getByText } = render(<App />);
 
@@ -17,9 +22,14 @@ test("episodes are set when season selected", async () => {
   // const wrapper = queryAllByTestId("dropdown");
   // wrapper.find("option").at(0).instance.selected = true;
 
-  await wait();
-  const dropdown = getByText(/select a season/i);
-  dropdown.value = "Season 1";
+  // await wait();
 
-  expect(queryAllByTestId("episodes")).toHaveLength(2);
+  await waitFor(() => {
+    expect(mockFetchShow).toHaveBeenCalledTimes(1);
+    expect(getByText(/a love letter/i));
+  });
+  // const dropdown = getByText(/select a season/i);
+  // dropdown.value = "Season 1";
+
+  // expect(queryAllByTestId("episode")).toHaveLength(8);
 });
