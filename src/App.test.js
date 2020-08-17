@@ -83,5 +83,6 @@ test('App can render the Episodes components ater the API call has finished', as
     const seasonSelect = screen.findByText(/select a season/i);
     const selectSeason = screen.findByDisplayValue(/season one/i);
 
+    
     // userEvent.click(seasonSelect)
 })
