@@ -15,8 +15,9 @@ export default function App() {
   const episodes = seasons[selectedSeason] || [];
 
   useEffect(() => {
-    fetchShow("https://api.tvmaze.com/singlesearch/shows?q=stranger-things&embed=episodes")
-      .then(res => {
+    fetchShow()
+      .then((res) => {
+        console.log(res);
         setShow(res.data);
         setSeasons(formatSeasons(res.data._embedded.episodes));
       });
