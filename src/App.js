@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Dropdown from "react-dropdown";
 import parse from "html-react-parser";
-
+//import {fetchShow as fakeFetchShow} from './api/fetchShow';
 import { formatSeasons } from "./utils/formatSeasons";
 
 import Episodes from "./components/Episodes";
@@ -25,6 +25,7 @@ export default function App() {
           setSeasons(formatSeasons(res.data._embedded.episodes));
         });
     };
+    
     fetchShow();
   }, []);
 
@@ -42,6 +43,7 @@ export default function App() {
       <h1>{show.name}</h1>
       {parse(show.summary)}
       <Dropdown
+        data-testid='dropDown'
         options={Object.keys(seasons)}
         onChange={handleSelect}
         value={selectedSeason || "Select a season"}
