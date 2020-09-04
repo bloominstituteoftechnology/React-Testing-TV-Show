@@ -9,12 +9,17 @@ jest.mock('./api/fetchShow');
 test('Episode info loads for each season wehen chosen from dopdown', async () => {
     //Arrange
     mockFetchShow.mockResolvedValueOnce(data);
-    const {getByText} = render(<App/>);
-    expect(mockFetchShow).toHaveBeenCalled(1);
-    //getByText(/fetching data.../i);
-    //const dropDown = getByText(/Select a season/i)
-    //Act
+    const {getByText, getAllByText} = render(<App/>);
+    
+    getByText(/fetching data.../i);
 
+    await waitFor(() => {
+      getByText(/Select a season/i)
+    }) 
+    //Act
+    fireEvent.mouseDown(getByText(/Select a season/i));
+    fireEvent.mouseDown(getByText(/Season 1/i));
+    expect(getAllByText(/episode/i)).toHaveLength(8);
     //Assert
 
 
