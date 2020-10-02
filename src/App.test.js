@@ -37,11 +37,13 @@ test("Nothing exist before API call", () => {
     await findByText(/fetching data.../i)
 
     const dropdown = await findByText(/Select a season/i)
+    await act(async () => {
     userEvent.click(dropdown)
-
+    })
     const seasonOne = await findByText(/Season 1/i)
+    await act(async () => {
     fireEvent.click(seasonOne)
-
+    })
     await waitFor(() => {
         expect(getAllByText(/episode/i)).toHaveLength(8)
     })
