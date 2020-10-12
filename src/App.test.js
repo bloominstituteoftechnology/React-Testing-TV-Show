@@ -19,3 +19,5 @@ describe("testing app can make api calls", () => {
     userEvent.click(seasonOne);
   });
 });
+
+//fixing this later
