@@ -1,9 +1,28 @@
-import React from 'react'
-import {screen, render, fireEvent, wait} from '@testing-library/react'
-import App from './App'
+import React from "react"
+import { render, fireEvent, wait } from "@testing-library/react"
 
-describe('App.js tests', () => {
-    test('renders without errors', () => {
-        render(<App />)
+import {fetchShow as mockFetchShow} from "./api/fetchShow"
+import App from "./App"
+
+jest.mock("./api/fetchShow");
+console.log("kh: App.test.js: mockFetchShow", mockFetchShow);
+
+test("App renders", () =>{
+    render(<App />)
+})
+
+test("App fetches show data and renders the data", async () =>{
+    mockFetchShow.mockResolvedValueOnce(mockFetchShow)
+
+    const { getByText } = render(<App />);
+
+    await wait (()=>{
+        getByText(/Select a season/i)
     })
+
+    const dropdown = getByText(/Select a season/i);
+    fireEvent.mouseDown(dropdown)
+
+    const season = getByText(/Season 4/i);
+    fireEvent.click(season);
 })
