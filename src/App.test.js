@@ -21,6 +21,7 @@ test('fetches show', async () => {
     ]
 
 };
+});
 
 test('fetches seasons', async () => {
     render(<App />);
@@ -40,7 +41,6 @@ fireEvent.click(dropdown);
 
 await wait();
 expect(screen.queryAllByTestId("season")).toHaveLength(2);
-    });
+
 });
 
-    
