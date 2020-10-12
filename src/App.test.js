@@ -1,24 +1,21 @@
+import { fireEvent, render, screen, wait } from "@testing-library/react";
 import React from "react";
 import App from "./App";
-import Episodes from "./components/Episodes";
-import { render, fireEvent, waitFor, screen } from "@testing-library/react";
-import { fetchShow, fetchShow as mockFetchShow } from "./api/fetchShow";
+import { fetchShow as mockFetchShow } from "./api/fetchShow";
+import { mockData } from "./mockdata";
 import userEvent from "@testing-library/user-event";
-
 jest.mock("./api/fetchShow");
-
-test("app renders without errors", () => {
-  render(<App />);
+describe("testing app can make api calls", () => {
+  test("app renders without errors", async () => {
+    mockFetchShow.mockResolvedValueOnce({ data: mockData });
+    render(<App />);
+  });
+  test("fetches showdata and renders data", async () => {
+    mockFetchShow.mockResolvedValueOnce({ data: mockData });
+    render(<App />);
+    const dropdown = await screen.findByText(/Select a season/i);
+    userEvent.click(dropdown);
+    const seasonOne = await screen.findByText(/Season 1/i);
+    userEvent.click(seasonOne);
+  });
 });
-
-// describe("testing the app", () => {
-
-//   test("fetches data and renders data", async () => {
-//     render(<App />);
-//     mockFetchShow.mockResolvedValueOnce([]);
-//     const dropDown = screen.findByTestId(/dropdown/i);
-//     userEvent.click(dropDown);
-//     // fireEvent.click(dropDown);
-//     // screen.getByText(/Season 1/i);
-//   });
-// });
