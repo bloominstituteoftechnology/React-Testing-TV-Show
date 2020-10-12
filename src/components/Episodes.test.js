@@ -26,6 +26,6 @@ test("renders dog images from API", () => {
   // We will rerender the component with our dummy data passed in as the new props
   rerender(<Episodes episodes={season} />);
 
-  // Assert that we now have dog images rendering!
+  // Assert
   expect(queryAllByTestId(/episode-card/i)).toHaveLength(1);
 });
