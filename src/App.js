@@ -7,6 +7,7 @@ import { formatSeasons } from "./utils/formatSeasons";
 
 import Episodes from "./components/Episodes";
 import "./styles.css";
+import FetchShow from './api/fetchShow';
 
 export default function App() {
   const [show, setShow] = useState(null);
@@ -15,39 +16,40 @@ export default function App() {
   const episodes = seasons[selectedSeason] || [];
 
   useEffect(() => {
-    const fetchShow = () => {
-      axios
-        .get(
-          "https://api.tvmaze.com/singlesearch/shows?q=stranger-things&embed=episodes"
-        )
-        .then(res => {
-          setShow(res.data);
-          setSeasons(formatSeasons(res.data._embedded.episodes));
-        });
+    //   const fetchShow = () => {
+    //     axios
+    //       .get(
+    //         "https://api.tvmaze.com/singlesearch/shows?q=stranger-things&embed=episodes"
+    //       )
+    //       .then(res => {
+    //         console.log(res.data._embedded.episodes);
+    //         setShow(res.data);
+    //         setSeasons(formatSeasons(res.data._embedded.episodes));
+    //       });
+    //   };
+      FetchShow()
+    }, []);
+
+    const handleSelect = e => {
+      setSelectedSeason(e.value);
     };
-    fetchShow();
-  }, []);
 
-  const handleSelect = e => {
-    setSelectedSeason(e.value);
-  };
+    if (!show) {
+      return <h2>Fetching data...</h2>;
+    }
 
-  if (!show) {
-    return <h2>Fetching data...</h2>;
+    return (
+      <div className="App">
+        <img className="poster-img" src={show.image.original} alt={show.name} />
+        <h1>{show.name}</h1>
+        {parse(show.summary)}
+        <Dropdown
+          options={Object.keys(seasons)}
+          onChange={handleSelect}
+          value={selectedSeason || "Select a season"}
+          placeholder="Select an option"
+        />
+        <Episodes episodes={episodes} />
+      </div>
+    );
   }
-
-  return (
-    <div className="App">
-      <img className="poster-img" src={show.image.original} alt={show.name} />
-      <h1>{show.name}</h1>
-      {parse(show.summary)}
-      <Dropdown
-        options={Object.keys(seasons)}
-        onChange={handleSelect}
-        value={selectedSeason || "Select a season"}
-        placeholder="Select an option"
-      />
-      <Episodes episodes={episodes} />
-    </div>
-  );
-}
