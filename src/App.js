@@ -11,7 +11,7 @@ import "./styles.css";
 import {fetchShow} from './api/fetchShow';
 
 export default function App() {
-  const [show, setShow] = useState(null);
+  const [show, setShow] = useState('');
   const [seasons, setSeasons] = useState([]);
   const [selectedSeason, setSelectedSeason] = useState("");
   const episodes = seasons[selectedSeason] || [];
@@ -20,8 +20,8 @@ export default function App() {
     fetchShow()
       .then(res=>{
         // console.log(res)
-        setShow(res);
-        setSeasons(formatSeasons(res._embedded.episodes))
+        setShow(res.data);
+        setSeasons(formatSeasons(res.data._embedded.episodes))
       })},[])
       // axios
       //   .get(
@@ -42,13 +42,14 @@ export default function App() {
   if (!show) {
     return <h2>Fetching data...</h2>;
   }
-
+  // console.log(show)
   return (
     <div className="App">
       <img className="poster-img" src={show.image.original} alt={show.name} />
       <h1>{show.name}</h1>
       {parse(show.summary)}
       <Dropdown
+        // data-testId='seasons'
         options={Object.keys(seasons)}
         onChange={handleSelect}
         value={selectedSeason || "Select a season"}
