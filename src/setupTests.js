@@ -5,11 +5,16 @@
 import "@testing-library/jest-dom/extend-expect";
 import React from "react";
 import { render } from "@testing-library/react";
+import App from "./App";
 import Episodes from "./components/Episodes";
-import "@testing-library/jest-dom/extend-expect";
 
-test("renders season images"),
+test("renders app"),
   () => {
-    const { getAllByTestId, rerender } = render(<Episodes images={[]} />);
-    expect(getAllByTestId(/episodes/i)).toHaveLength(0);
+    render(<App />);
   };
+
+// test("renders season images"),
+//   () => {
+//     const { getAllByTestId, rerender } = render(<Episodes images={[]} />);
+//     expect(getAllByTestId(/episodes/i)).toHaveLength(0);
+//   };
