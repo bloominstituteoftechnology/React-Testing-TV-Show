@@ -20,6 +20,7 @@ export default function App() {
 
     res.then(re => {
       setShow(re.data);
+      console.log(re)
       setSeasons(formatSeasons(re.data._embedded.episodes));
     })
       .catch(err => {
