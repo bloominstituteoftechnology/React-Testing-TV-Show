@@ -22,6 +22,7 @@ export default function App() {
         )
         .then(res => {
           setShow(res.data);
+          console.log(res)
           setSeasons(formatSeasons(res.data._embedded.episodes));
         });
     };
