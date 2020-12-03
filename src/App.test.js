@@ -4,8 +4,9 @@ import App from './App'
 import {fetchShow} from './api/fetchShow'
 
 
+jest.mock('./api/fetchShow')
+
 test("App Renders", () => {
     render(<App/>)
 })
 
-jest.mock('./api/fetchShow')
