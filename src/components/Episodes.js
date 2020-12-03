@@ -12,7 +12,7 @@ export default function Episodes(props) {
           <div className="episode-info">
             <p className="episode-number">
               Season {e.season}, Episode {e.number}
-            </p>
+            </p>  
             <h3>{e.name}</h3>
             {e.summary && parse(e.summary)}
             <div className="flex-spacer" />
