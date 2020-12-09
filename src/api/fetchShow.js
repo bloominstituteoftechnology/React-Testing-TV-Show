@@ -9,6 +9,6 @@ export const fetchShow = () => {
       return res;
     })
     .catch((err) => {
-      return err;
+      alert("There was an error processing your request:", err);
     });
 };
