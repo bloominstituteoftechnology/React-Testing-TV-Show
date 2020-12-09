@@ -593,9 +593,9 @@ test("render shows", async () => {
   const selectSeason = screen.getByText(/Select a season/i);
 
   userEvent.click(selectSeason);
-  userEvent.click(screen.getByText(/season 1/i));
+  userEvent.click(screen.getByText(/Season 1/i));
 
-  await waitFor(() => screen.findAllByTestId("episode"));
+  await waitFor(() => screen.getAllByTestId("episode"));
 
   expect(screen.getAllByTestId("episode")).toHaveLength(8);
 });
