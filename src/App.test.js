@@ -584,18 +584,23 @@ const showData = {
 
 jest.mock("./api/fetchShow.js");
 
+// mock api call with show data
 test("render shows", async () => {
   mockFetchShow.mockResolvedValueOnce(showData);
 
   render(<App />);
 
   expect(await screen.findByText(/A love letter to the '80s/i));
+
+  // mimic dropdown
   const selectSeason = screen.getByText(/Select a season/i);
 
+  // click dropdown and verify content(s)
   userEvent.click(selectSeason);
   userEvent.click(screen.getByText(/Season 1/i));
 
   await waitFor(() => screen.getAllByTestId(/episode/i));
 
+  // validate the correct number of items
   expect(screen.getAllByTestId(/episode/i)).toHaveLength(8);
 });

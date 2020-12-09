@@ -80,10 +80,12 @@ const episodesData = [
   },
 ];
 
+// Test that page will render w/o errors
 test("Renders without errors", () => {
   render(<Episodes episodes={[]} />);
 });
 
+// Render w/o props and render w/ props
 test("Rerenders with new props", () => {
   const { rerender } = render(<Episodes episodes={[]} />);
 
