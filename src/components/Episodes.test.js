@@ -85,7 +85,7 @@ test("Renders without errors", () => {
 });
 
 test("Rerenders with new props", () => {
-  const { rerender } = render(<Episodes episodes={[episodesData]} />);
+  const { rerender } = render(<Episodes episodes={[]} />);
 
   rerender(<Episodes episodes={episodesData} />);
 
