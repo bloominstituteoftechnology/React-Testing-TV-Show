@@ -8,3 +8,5 @@ export const formatSeasons = (allEpisodes) => {
   });
   return seasons;
 };
+
+export default formatSeasons
