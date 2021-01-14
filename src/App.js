@@ -7,7 +7,7 @@ import { formatSeasons } from './utils/formatSeasons';
 
 import Episodes from './components/Episodes';
 import './styles.css';
-import fetchShow from './api/fetchShow';
+import { fetchShow } from './api/fetchShow';
 
 export default function App() {
 	const [show, setShow] = useState(null);
