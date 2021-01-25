@@ -17,10 +17,9 @@ export default function App() {
   useEffect(() => {
     fetchShow()
         .then((res) => {
-          // set state with the data
-          setShow(res.data);
-          console.log("App res.data", res.data);
-          setSeasons(formatSeasons(res.data._embedded.episodes));
+          setShow(res);
+          console.log("App res.data", res);
+          setSeasons(formatSeasons(res._embedded.episodes));
         });
     fetchShow();
   }, []);
