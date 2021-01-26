@@ -18,7 +18,7 @@ export default function App() {
     fetchShow()
         .then((res) => {
           setShow(res);
-          console.log("App res.data", res);
+          // console.log("App res.data", res);
           setSeasons(formatSeasons(res._embedded.episodes));
         });
     fetchShow();
