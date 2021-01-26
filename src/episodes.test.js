@@ -1,6 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import Episodes from "./components/Episodes";
+import StrangerTestData from "./api/strangerTestData";
 
 const episodes = [
   {
@@ -58,17 +59,26 @@ test("renders changes in episodes list correctly", () => {
 // import { render, screen, waitFor } from "@testing-library/react";
 // import userEvent from "@testing-library/user-event";
 // import Episodes from "./components/Episodes";
-// import StrangerData from "./api/strangerTestData";
 
-// test("does episodes render", async () => {
-//   const fakeData = jest.fn(StrangerData);
+test("does episodes render", async () => {
+  const fakeData = jest.fn(StrangerTestData);
+  //   console.log(StrangerTestData);
+  render(<Episodes episodes={StrangerTestData._embedded.episodes} />); //// make sure you're accessing the right piece of data////
+  const episode1 = await screen.findByText(
+    /Chapter One: The Vanishing of Will Byers/i
+  );
+  /////image renders with alt text as name:///
+  const episodeImg = await screen.findAllByAltText(
+    /Chapter One: The Vanishing of Will Byers/i
+  );
+  expect(episodeImg).toHaveLength(1);
+  //   console.log(episodeImg);
+  const getSeasonNumber = await screen.getAllByTestId(/season-episode/i);
+  console.log(getSeasonNumber[0]);
+  //   expect(
+  //     getSeasonNumber[0].__reactEventHandlers$w2cvqkt36w.children
+  //   ).toHaveLength(4);
 
-//   render(<Episodes episodes={[fakeData]} />);
-
-//   const episode1 = await screen.findByText(
-//     /Chapter One: The Vanishing of Will Byers/i
-//   );
-
-//   console.log(episode1); /// returning pending promise
-
-// });
+  //   expect(getSeasonNumber[0]).toBeInTheDocument();
+  //   console.log(episode1); /// returning pending promise
+});
