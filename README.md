@@ -16,15 +16,15 @@ Get the project fired up and start using it as a user would. Try to go through t
 
 ### Project Set Up
 
-- [ ] Create a forked copy of this project.
-- [ ] Add your team lead as collaborator on Github.
-- [ ] Clone your OWN version of the repository in your terminal
-- [ ] CD into the project base directory `cd React-Testing-TV-Show`
-- [ ] Download project dependencies by running `npm install`
-- [ ] Start up the app using `npm start`
-- [ ] Create a new branch: git checkout -b `<firstName-lastName>`.
-- [ ] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly.
-- [ ] Push commits: git push origin `<firstName-lastName>`.
+- [X] Create a forked copy of this project.
+- [X] Add your team lead as collaborator on Github.
+- [X] Clone your OWN version of the repository in your terminal
+- [X] CD into the project base directory `cd React-Testing-TV-Show`
+- [X] Download project dependencies by running `npm install`
+- [X] Start up the app using `npm start`
+- [X] Create a new branch: git checkout -b `<firstName-lastName>`.
+- [X] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly.
+- [X] Push commits: git push origin `<firstName-lastName>`.
 
 Follow these steps for completing your project.
 
@@ -32,18 +32,18 @@ Follow these steps for completing your project.
 
 ### Instructions and/or completion requirements
 
-Your challenge for this module: write tests for both the `App.js` component and the `Episodesjs` component. Take note of where the state is being managed, where the async call is, and where different data peices are being rendered. Understanding all of this will be important so you know how to test each component.
+Your challenge for this module: write tests for both the `App.js` component and the `Episodes.js` component. Take note of where the state is being managed, where the async call is, and where different data peices are being rendered. Understanding all of this will be important so you know how to test each component.
 
 **Moving the async call**
 
-The async call being inside the component makes it hard to test the asynchronous nature of the component. Let's move the async function into an `/api` directory so we can easily mock that function and make the async tests easier.
+- [X] The async call being inside the component makes it hard to test the asynchronous nature of the component. Let's move the async function into an `/api` directory so we can easily mock that function and make the async tests easier.
 
-1. Create a directory called `/api` in the `src` directory
-1. Create a file inside `/api` called `fetchShow.js`
-1. Move `fetchShow` into that new file and export it (fetchShow is in the `useEffect` - pay attention to how this was setting state. You will still need to set state in this effect hook the exact same way...)
-1. Import `fetchShow` into `App.js` so you can make your async call from your `useEffect` hook.
-1. You will need to `return` the `axios.get` call, _and_ the data inside your `.then()`. This is necessary because when you call `fetchShow` in your useEffect, you need to chain off the promise for a new `.then()`, then you need the data to be returned once the promise is resolved
-1. Inside your `.then()` in the `useEffect` hook, set your data again.
+- [X] Create a directory called `/api` in the `src` directory
+- [X] Create a file inside `/api` called `fetchShow.js`
+- [X] Move `fetchShow` into that new file and export it (fetchShow is in the `useEffect` - pay attention to how this was setting state. You will still need to set state in this effect hook the exact same way...)
+- [X] Import `fetchShow` into `App.js` so you can make your async call from your `useEffect` hook.
+- [X] You will need to `return` the `axios.get` call, _and_ the data inside your `.then()`. This is necessary because when you call `fetchShow` in your useEffect, you need to chain off the promise for a new `.then()`, then you need the data to be returned once the promise is resolved
+- [X] Inside your `.then()` in the `useEffect` hook, set your data again.
 
 - Note that you need `axios` in the new file
 
