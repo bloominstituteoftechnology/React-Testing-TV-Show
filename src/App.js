@@ -23,6 +23,7 @@ export default function App() {
         .then(res => {
           setShow(res.data);
           setSeasons(formatSeasons(res.data._embedded.episodes));
+          console.log(res.data._embedded.episodes)
         });
     };
     fetchShow();
@@ -39,7 +40,7 @@ export default function App() {
   return (
     <div className="App">
       <img className="poster-img" src={show.image.original} alt={show.name} />
-      <h1>{show.name}</h1>
+      <h1 data-testid="shows">{show.name}</h1>
       {parse(show.summary)}
       <Dropdown
         options={Object.keys(seasons)}
