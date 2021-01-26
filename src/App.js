@@ -28,7 +28,7 @@ export default function App() {
       ///try catch method////
       try {
         const res = await fetchShow();
-        console.log("await res", res);
+        // console.log("await res", res); /// add this back after testing
         setShow(res.data);
         setSeasons(formatSeasons(res.data._embedded.episodes));
       } catch (err) {
