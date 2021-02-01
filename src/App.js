@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import Dropdown from "react-dropdown";
 import parse from "html-react-parser";
 
-import { formatSeasons } from "./utils/formatSeasons";
 import fetchShow from './api/fetchShow';
+import { formatSeasons } from "./utils/formatSeasons";
 
 import Episodes from "./components/Episodes";
 import "./styles.css";
@@ -12,25 +12,31 @@ export default function App() {
   const [show, setShow] = useState(null);
   const [seasons, setSeasons] = useState([]);
   const [selectedSeason, setSelectedSeason] = useState("");
-  const episodes = seasons[selectedSeason] || [];
+  const episodes = seasons[selectedSeason] || []; // this is known as derived state - derived from props or state (this is dependant on both seasons and selected seasons)
 
   useEffect(() => {
     fetchShow()
-        .then((res) => {
-          setShow(res);
-          // console.log("App res.data", res);
-          setSeasons(formatSeasons(res._embedded.episodes));
-        });
-    fetchShow();
+      .then(res => {
+        // console.log("App Success: ", res);
+        setShow(res);
+        setSeasons(formatSeasons(res._embedded.episodes));
+      })
+      .catch(err => {
+        console.log('Error happened: ', err)
+      })
   }, []);
 
   const handleSelect = e => {
     setSelectedSeason(e.value);
   };
+  
+  // console.log('seasons: ', seasons);
+  // console.log('selected: ', selectedSeason);
+  // console.log('episodes: ', episodes);
 
   if (!show) {
     return <h2>Fetching data...</h2>;
-  }
+  };
 
   return (
     <div className="App">
@@ -46,4 +52,4 @@ export default function App() {
       <Episodes episodes={episodes} />
     </div>
   );
-}
+};
