@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
 import Dropdown from "react-dropdown";
 import parse from "html-react-parser";
-
 import { formatSeasons } from "./utils/formatSeasons";
-
+// import { fetchShow } from "./api/fetchShow";
 import Episodes from "./components/Episodes";
 import "./styles.css";
+import { fetchShow } from "./api/fetchShow";
 
 export default function App() {
   const [show, setShow] = useState(null);
@@ -14,21 +14,45 @@ export default function App() {
   const [selectedSeason, setSelectedSeason] = useState("");
   const episodes = seasons[selectedSeason] || [];
 
+  // const getShow = async () => {
+  //   fetchShow()
+  //   const res = await fetchShow();
+  //   setShow().then((res) => {
+  //     setShow(res.data);
+  //     setSeasons(formatSeasons(res.data._embedded.episodes))
+  //   })
+  // }
+  //// async and await method...//////
   useEffect(() => {
-    const fetchShow = () => {
-      axios
-        .get(
-          "https://api.tvmaze.com/singlesearch/shows?q=stranger-things&embed=episodes"
-        )
-        .then(res => {
-          setShow(res.data);
-          setSeasons(formatSeasons(res.data._embedded.episodes));
-        });
-    };
-    fetchShow();
+    async function fetchData() {
+      ///try catch method////
+      try {
+        const res = await fetchShow();
+        // console.log("await res", res); /// add this back after testing
+        setShow(res.data);
+        setSeasons(formatSeasons(res.data._embedded.episodes));
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    fetchData();
   }, []);
 
-  const handleSelect = e => {
+  ///////.then and .catch method/////
+  // useEffect(() => {
+  //   fetchShow()
+  //     .then((res) => {
+  //       setShow(res.data);
+  //       setSeasons(formatSeasons(res.data._embedded.episodes));
+  //     })
+  //     .catch((err) => {
+  //       setShow(false);
+  //       setSeasons(err.message);
+  //     });
+  // }, []);
+  ////////////END/////////
+
+  const handleSelect = (e) => {
     setSelectedSeason(e.value);
   };
 
