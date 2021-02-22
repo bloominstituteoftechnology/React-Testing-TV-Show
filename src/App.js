@@ -20,8 +20,8 @@ export default function App() {
     .then(res => {
       setShow(res.data);
       setSeasons(formatSeasons(res.data._embedded.episodes))
-    }, []);
-  });
+    });
+  }, []);
 
   const handleSelect = e => {
     setSelectedSeason(e.value);
