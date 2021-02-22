@@ -3,6 +3,7 @@
 ## Advanced Web Applications ➡ Testing React
 
 ### Objectives
+-initial comment for commit
 
 - use mocks in unit tests
 - test asynchronous API calls that are made in a component
