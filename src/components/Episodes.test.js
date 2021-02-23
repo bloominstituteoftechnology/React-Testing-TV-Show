@@ -41,4 +41,4 @@ test('re-renders properly with episode data', () => {
     rerender(<Episodes episodes={[episodeData]} />);
 
     expect(screen.getByText(/season/i)).toBeInTheDocument();
-})
+});
