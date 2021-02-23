@@ -1,23 +1,24 @@
 import React from "react";
 import { render, screen, waitFor } from "@testing-library/react";
+import userEvent from '@testing-library/user-event';
 import App from './App';
 import {fetchShow as mockFetchShow } from './api/fetchShow';
-import userEvent from '@testing-library/user-event';
 import { mockData } from './mockData';
 
 jest.mock('./api/fetchShow');
-
-
 
 test('renders seasons without errors', async () => {
     mockFetchShow.mockResolvedValueOnce(mockData);
     render(<App />);
 
-    const dropdown = await waitFor(() => screen.findByText(/select a season/i));
-    const dropdownSeason = await waitFor(() => screen.getByText(/season 1/i));
+    const header = await screen.findByRole("heading", {name: /stranger things/i});
 
-    userEvent.click(dropdown);
-    userEvent.click(dropdownSeason);
+    expect(header).toBeInTheDocument();
 
-    await waitFor(() => {screen.findByText(/season 1, episode 1/i)}).toBeInTheDocument();
+    userEvent.click(screen.getByText(/select a season/i));
+
+    userEvent.click(screen.getByText(/season 1/i));
+
+    expect(screen.getAllByText(/chapter/i)).toHaveLength(3);
+
 });
