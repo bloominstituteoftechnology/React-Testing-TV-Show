@@ -29,3 +29,10 @@ test("renders without errors", () => {
     render(<Episodes episodes={ [] }/>)
 })
 
+test("Render episode", async () => {
+    const { rerender } = render(<Episodes episodes={[]} />);
+
+    rerender(<Episodes episodes={episodeTest} />);
+
+    expect(await screen.findAllByText(/Chapter Two/i))
+})
