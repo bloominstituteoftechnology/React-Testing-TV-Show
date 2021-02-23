@@ -98,28 +98,7 @@ const mockData = {
                     }
                 }
             },
-            {
-                "id": 578664,
-                "url": "http://www.tvmaze.com/episodes/578664/stranger-things-1x03-chapter-three-holly-jolly",
-                "name": "Chapter Three: Holly, Jolly",
-                "season": 1,
-                "number": 3,
-                "type": "regular",
-                "airdate": "2016-07-15",
-                "airtime": "",
-                "airstamp": "2016-07-15T12:00:00+00:00",
-                "runtime": 60,
-                "image": {
-                    "medium": "http://static.tvmaze.com/uploads/images/medium_landscape/67/168920.jpg",
-                    "original": "http://static.tvmaze.com/uploads/images/original_untouched/67/168920.jpg"
-                },
-                "summary": "<p>While Nancy looks for a missing Barbara and realizes that Jonathan may have been the last person to see her, Mike and his friends go out with Jane to find the missing Will. Meanwhile, Jim tracks Will to the lab.</p>",
-                "_links": {
-                    "self": {
-                        "href": "http://api.tvmaze.com/episodes/578664"
-                    }
-                }
-            },
+            
             {
                 "id": 578665,
                 "url": "http://www.tvmaze.com/episodes/578665/stranger-things-1x04-chapter-four-the-body",
@@ -149,12 +128,23 @@ const mockData = {
 jest.mock("./api/fetchShow")
 
 test("Renders without errors", async () => {
-    mockFetchShow.mockResolvedValueOnce({date: mockData})
+    mockFetchShow.mockResolvedValueOnce({data: mockData})
     render(<App />)
 })
 
 test("Render season options and allow click", async () => {
+    mockFetchShow.mockResolvedValueOnce({data: mockData})
+    render(<App />)
     const dropdownMenu = await screen.findByText(/select a season/i)
     // add code here to click, target, and load different dropdown option.
-})
+    userEvent.click(dropdownMenu);
+    const season = await screen.findByText(/season 1/i);
 
+    expect(season).toBeInTheDocument();
+
+    userEvent.click(season)
+
+    // expect(await screen.(/episode/i))
+    expect (await screen.findAllByText(/Season 1,/i)).toHaveLength(3)
+
+})
