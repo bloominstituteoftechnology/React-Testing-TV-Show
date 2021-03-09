@@ -190,5 +190,5 @@ test('renders dog images from API', async () => {
 
 Finally we make sure the correct function was called by adding an extra assertion
 
-expet(mockFetchDoggos).toHaveBeenCalledTimes(1);
+expecq`1`   2t(mockFetchDoggos).toHaveBeenCalledTimes(1);
 
