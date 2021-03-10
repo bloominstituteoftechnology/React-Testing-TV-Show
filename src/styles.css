@@ -12,6 +12,11 @@ body {
   background-color: #070724;
 }
 
+h2 {
+  color: dodgerblue;
+  margin: 1rem;
+}
+
 .App {
   font-family: sans-serif;
   text-align: center;
