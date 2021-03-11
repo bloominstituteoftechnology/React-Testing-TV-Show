@@ -1,6 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { render, screen, fireEvent } from '@testing-library/react';
 import App from './App';
 import { fetchShow as mockFetchShow } from './api/fetchShow'
 
@@ -54,6 +53,8 @@ test('renders without errors', async () => {
   render(<App />)
 
 
+const button = screen.queryAllByTestId('season')
 
+expect(button).toHaveTextContent([/Select a season/i])
 
 })
