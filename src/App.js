@@ -3,7 +3,7 @@ import Dropdown from "react-dropdown";
 import parse from "html-react-parser";
 
 import { formatSeasons } from "./utils/formatSeasons";
-import fetchShow from "./api/fetchShow";
+import fetchShow  from "./api/fetchShow";
 
 import Episodes from "./components/Episodes";
 import "./styles.css";
@@ -40,6 +40,7 @@ export default function App() {
       <h1>{show.name}</h1>
       {parse(show.summary)}
       <Dropdown
+        data-testid="dropdown"
         options={Object.keys(seasons)}
         onChange={handleSelect}
         value={selectedSeason || "Select a season"}
@@ -49,3 +50,5 @@ export default function App() {
     </div>
   );
 }
+
+
