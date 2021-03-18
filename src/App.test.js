@@ -52,4 +52,8 @@ jest.mock('./api/fetchShow.js')
 test('App component is rendering properly', () => {
     mockFetchShow.mockResolvedValueOnce(mockResponse);
     render(<App />);
+
+    const dropdown = screen.getByTestId("dropdown");
+    userEvent.change(dropdown, 'Season 1')
+
 })
