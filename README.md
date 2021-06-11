@@ -36,6 +36,7 @@ Your challenge for this module: write tests for both the `App.js` component and 
 
 **Moving the async call**
 
+
 The async call being inside the component makes it hard to test the asynchronous nature of the component. Let's move the async function into an `/api` directory so we can easily mock that function and make the async tests easier.
 
 1. Create a directory called `/api` in the `src` directory
