@@ -5,6 +5,8 @@ import parse from "html-react-parser";
 import { fetchShow } from './api/fetchShow';
 import { formatSeasons } from "./utils/formatSeasons";
 
+
+import Autocomplete from "./components/Autocomplete";
 import Episodes from "./components/Episodes";
 import "./styles.css";
 
@@ -85,15 +87,24 @@ export default function App() {
         </p>
       ) : null}
 
+      <Autocomplete
+        desiredShow={desiredShow}
+        setShowApi={setShowApi}
+        setDesiredShow={setDesiredShow}
+        setShowText={setShowText}
+        setSeasons={setSeasons}
+        setSelectedSeason={setSelectedSeason}
+        setShow={setShow}
+      />
+
       {show.image ? (
         <img className="poster-img" src={show.image.original} alt={show.name} />
       ) : (
         <p>Could not find an image for {show.name}</p>
       )}
-      <h1 data-testid="show">{show.name}</h1>
-      {parse(show.summary)}
+      <h1>{show.name}</h1>
+      {show.summary && parse(show.summary)}
       <Dropdown
-        data-testid="season"
         options={Object.keys(seasons)}
         onChange={handleSelect}
         value={selectedSeason || "Select a season"}
