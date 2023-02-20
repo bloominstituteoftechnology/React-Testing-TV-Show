@@ -104,3 +104,25 @@ p.episode-runtime {
   margin-top: 8px;
   font-size: 0.8rem;
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  /* width: 100%; */
+  /* max-width: 400px; */
+  margin: 0 auto;
+}
+
+input {
+  margin: 1rem 0;
+  display: block;
+  width: 94%;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 10px;
+  transition: all 0.3s;
+  font-size: 1.2rem;
+  letter-spacing: 0.5px;
+  background-color: white;
+}
