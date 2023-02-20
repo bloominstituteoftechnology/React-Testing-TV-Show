@@ -5,7 +5,8 @@ export const fetchShow = (showApi) => {
       .get(
         showApi
         // "https://api.tvmaze.com/singlesearch/shows?q=stranger-things&embed=episodes"
-      )
+        // "https://api.tvmaze.com/shows?q=gravity-falls&embed=episodes" ^^^^ Outdated, no longer works.
+        )
       .then(res => {
           console.log("nb: fetchShow.js: fetchShow: res: ", res.data);
           return res;

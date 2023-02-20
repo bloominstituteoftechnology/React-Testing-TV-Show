@@ -17,7 +17,7 @@ export default function App() {
   const [error, setError] = useState("");
   const [desiredShow, setDesiredShow] = useState([]);
   const [showApi, setShowApi] = useState(
-    "https://api.tvmaze.com/singlesearch/shows?q=gravity-falls&embed=episodes"
+    "https://api.tvmaze.com/shows?q=gravity-falls&embed=episodes"
   );
   const [selectedSeason, setSelectedSeason] = useState("");
   const episodes = seasons[selectedSeason] || [];
@@ -52,9 +52,10 @@ export default function App() {
   const handleSubmit = (e) => {
     setSelectedSeason("");
     e.preventDefault();
-    const showWords = showText.split(" ").join("-").toLowerCase();
+    const showWords = showText.split(" ").join("").toLowerCase();
+    // const showWords = showText.replace(/\s/g,"-").toLowerCase();
     setShowApi(
-      `https://api.tvmaze.com/singlesearch/shows?q=${showWords}&embed=episodes`
+      `https://api.tvmaze.com/search/shows?q=${showWords}&embed=episodes`
     );
 
     setShowText("");
